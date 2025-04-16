@@ -1,0 +1,15 @@
+:root {
+  /* Backgrounds */
+  --color-bg: rgba(17, 24, 39, 0.9);
+  --color-card-bg: #1f2937;
+  --gradient-bg: linear-gradient(to right, #111827, #000000);
+
+  /* Text */
+  --color-text: #ffffff;
+  --color-muted: #cbd5e1;
+  --color-extra-muted: #adaebc;
+
+  /* Buttons */
+  --color-primary: #8b5cf6;
+  --color-primary-hover: #7c3aed;
+}
