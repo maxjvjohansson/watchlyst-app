@@ -1,8 +1,10 @@
+import { MouseEvent, ReactNode } from "react";
+
 type Props = {
   type?: "button" | "submit" | "reset";
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
 };
 
