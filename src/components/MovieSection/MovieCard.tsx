@@ -1,3 +1,9 @@
+import ApiTest from "@/services/tmdb";
+
 export default function MovieCard() {
-  return <article></article>;
+  return (
+    <article>
+      <ApiTest />
+    </article>
+  );
 }
