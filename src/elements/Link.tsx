@@ -1,13 +1,15 @@
+import { ReactNode } from "react";
+
 type Props = {
   href: string;
-  text?: string;
   className: string;
+  children?: ReactNode;
 };
 
-export default function Link({ href, text, className }: Props) {
+export default function Link({ href, className, children }: Props) {
   return (
     <a href={href} className={className}>
-      {text && <span>{text}</span>}
+      {children}
     </a>
   );
 }
