@@ -2,6 +2,7 @@ import Link from "@/elements/Link";
 import Image from "@/elements/Image";
 import WatchProviders from "./WatchProviders";
 import RatingBadge from "./RatingBadge";
+import "./MovieCard.css";
 
 type Props = {
   data: {
@@ -40,20 +41,30 @@ export default function MovieCard({ data }: Props) {
   const linkToShow = imdbUrl?.includes("imdb.com") ? imdbUrl : tmdbUrl;
 
   return (
-    <article>
+    <article className="movie-card">
       <RatingBadge rating={rating} />
-      <Image src={posterUrl} alt={title} />
-      <h2>{title}</h2>
-      <p>{year}</p>
+      <Image className="movie-poster" src={posterUrl} alt={title} />
+      <div className="movie-heading">
+        <h2 className="movie-title">{title}</h2>
+        <p className="movie-year">{year}</p>
+      </div>
+      <div className="genre-tags">
+        {genres.map((g) => (
+          <span key={g} className="genre-tag">
+            {g}
+          </span>
+        ))}
+      </div>
+      <p className="movie-overview">{overview}</p>
       <WatchProviders providers={watchProviders} />
-      <p>{genres.join(" ")}</p>
-      <p>{overview}</p>
-      <Link className="tmdb-link" href={linkToShow}>
-        {imdbUrl ? "IMDb" : "TMDB"}
-      </Link>
-      <Link className="trailer-link" href={trailerUrl}>
-        Trailer
-      </Link>
+      <div className="movie-links">
+        <Link className="tmdb-link" href={linkToShow}>
+          {imdbUrl ? "IMDb" : "TMDB"}
+        </Link>
+        <Link className="link trailer" href={trailerUrl}>
+          Trailer
+        </Link>
+      </div>
     </article>
   );
 }

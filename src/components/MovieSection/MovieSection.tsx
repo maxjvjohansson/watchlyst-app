@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getTmdbData } from "@/services/tmdb";
-import MovieCard from "./MovieCard";
+import MovieCard from "../MovieCard/MovieCard";
 
 type MovieData = any;
 

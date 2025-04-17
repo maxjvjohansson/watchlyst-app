@@ -1,7 +1,8 @@
 :root {
   /* Backgrounds */
   --color-bg: rgba(17, 24, 39, 0.9);
-  --color-card-bg: #1f2937;
+  --color-card-bg: #111827;
+  --color-tag-bg: #1f2937;
   --gradient-bg: linear-gradient(to right, #111827, #000000);
 
   /* Text */
