@@ -17,9 +17,16 @@
   border-bottom: 1px solid var(--color-muted);
 }
 
+.dropdown-item:hover {
+  background-color: #eeeeee;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .dropdown-poster {
   width: 3rem;
   height: auto;
   object-fit: cover;
+  aspect-ratio: 2 / 3;
   border-radius: 0.25rem;
 }

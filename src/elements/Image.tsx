@@ -17,9 +17,11 @@ export default function Image({
   height,
   title,
 }: Props) {
+  const fallbackImage = "/fallback_image.svg";
   return (
     <img
-      src={src}
+      src={src || fallbackImage}
+      onError={(e) => (e.currentTarget.src = fallbackImage)}
       alt={alt}
       className={className}
       loading={loading}
