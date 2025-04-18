@@ -1,5 +1,5 @@
 import HeroHeader from "./HeroHeader";
-import SearchPanel from "./SearchPanel";
+import SearchPanel from "../SearchPanel/SearchPanel";
 
 export default function Hero() {
   return (
