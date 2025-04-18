@@ -56,12 +56,22 @@ export default function MovieCard({ data }: Props) {
         ))}
       </div>
       <p className="movie-overview">{overview}</p>
-      <WatchProviders providers={watchProviders} />
+      <WatchProviders providers={watchProviders} tmdbUrl={tmdbUrl} />
       <div className="movie-links">
-        <Link className="tmdb-link" href={linkToShow}>
+        <Link
+          className="tmdb-link"
+          href={linkToShow}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {imdbUrl ? "IMDb" : "TMDB"}
         </Link>
-        <Link className="link trailer" href={trailerUrl}>
+        <Link
+          className="link trailer"
+          href={trailerUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Trailer
         </Link>
       </div>

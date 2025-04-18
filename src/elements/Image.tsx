@@ -5,6 +5,7 @@ type Props = {
   loading?: "lazy" | "eager";
   width?: number | string;
   height?: number | string;
+  title?: string;
 };
 
 export default function Image({
@@ -14,6 +15,7 @@ export default function Image({
   loading = "lazy",
   width,
   height,
+  title,
 }: Props) {
   return (
     <img
@@ -23,6 +25,7 @@ export default function Image({
       loading={loading}
       width={width}
       height={height}
+      title={title}
     />
   );
 }
