@@ -29,7 +29,7 @@ export async function getTmdbData(id: number, type: TmdbType) {
     id: info.id,
     title: type === "movie" ? info.title : info.name,
     year: year,
-    posterUrl: `https://image.tmdb.org/t/p/w500${info.poster_path}`,
+    posterUrl: `https://image.tmdb.org/t/p/w342${info.poster_path}`,
     rating: Number(info.vote_average).toFixed(1),
     overview: info.overview,
     genres: info.genres.slice(0, 3).map((g: { name: string }) => g.name),

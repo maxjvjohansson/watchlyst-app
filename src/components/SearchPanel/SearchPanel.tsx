@@ -1,7 +1,8 @@
-import { ChangeEvent, useState, useEffect } from "react";
+import { ChangeEvent, useState } from "react";
 import Button from "@/elements/Button";
 import InputField from "@/elements/InputField";
 import { searchTMDB } from "@/services/tmdbSearch";
+import Dropdown from "./Dropdown";
 
 export default function SearchPanel() {
   const [inputValue, setInputValue] = useState("");
@@ -23,8 +24,12 @@ export default function SearchPanel() {
   return (
     <form>
       <div>
-        <Button type="button">Movies</Button>
-        <Button type="button">Series</Button>
+        <Button type="button" onClick={() => setSelectedType("movie")}>
+          Movies
+        </Button>
+        <Button type="button" onClick={() => setSelectedType("tv")}>
+          Series
+        </Button>
       </div>
       <InputField
         id="search"
@@ -32,6 +37,15 @@ export default function SearchPanel() {
         onChange={handleChange}
         placeholder="Enter a movie or show you like..."
       />
+      {suggestions.length > 0 && (
+        <Dropdown
+          suggestions={suggestions}
+          onSelect={(item) => {
+            setInputValue(item.title);
+            setSuggestions([]);
+          }}
+        />
+      )}
       <Button type="submit">Get Recommendations</Button>
     </form>
   );
