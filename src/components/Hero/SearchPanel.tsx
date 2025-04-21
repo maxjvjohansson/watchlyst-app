@@ -11,8 +11,10 @@ export default function SearchPanel() {
 
   return (
     <form>
-      <div>
-        <Button type="button">Movies</Button>
+      <div className="toggle">
+        <Button type="button" className="active">
+          Movies
+        </Button>
         <Button type="button">Series</Button>
       </div>
       <InputField
