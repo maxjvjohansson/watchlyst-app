@@ -41,7 +41,7 @@ export default function SearchPanel() {
         <Dropdown
           suggestions={suggestions}
           onSelect={(item) => {
-            setInputValue(item.title);
+            setInputValue(`${item.title} (${item.year})`);
             setSuggestions([]);
           }}
         />
