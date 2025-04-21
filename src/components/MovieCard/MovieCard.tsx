@@ -38,7 +38,8 @@ export default function MovieCard({ data }: Props) {
     trailerUrl,
   } = data;
 
-  const linkToShow = imdbUrl?.includes("imdb.com") ? imdbUrl : tmdbUrl;
+  const linkToShow = imdbUrl || tmdbUrl;
+  const linkLabel = imdbUrl ? "IMDb" : "TMDB";
 
   return (
     <article className="movie-card">
@@ -64,7 +65,7 @@ export default function MovieCard({ data }: Props) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {imdbUrl ? "IMDb" : "TMDB"}
+          {linkLabel}
         </Link>
         <Link
           className="link trailer"
