@@ -60,13 +60,12 @@ form {
     flex-direction: column;
     background-color: var(--color-bg);
     width: 90%;
-    padding: 1.5rem 0;
+    padding: 1.5rem 1.5rem;
     border-radius: 0.75rem;
 }
 
 .toggle {
     display: flex;
-    width: 85%;
     background-color: var(--color-card-bg);
     border-radius: 0.5rem;
 }
@@ -77,6 +76,7 @@ form {
     justify-content: center;
     align-items: center;
     background-color: var(--color-card-bg);
+    font-weight: 400;
 }
 
 .toggle .active {
@@ -94,7 +94,7 @@ form div {
 form input {
     padding: 0 1.25rem 0 2.5rem;
     height: 100%;
-    width: 85%;
+    width: 100%;
     border-radius: 0.5rem;
     background-color: var(--color-card-bg);
     border: none;
@@ -112,7 +112,7 @@ form input::placeholder {
 
 form button {
     border-radius: 0.5rem;
-    width: 85%;
+    width: 100%;
     height: 3rem;
     border: none;
     background-color: var(--color-primary);
