@@ -1,11 +1,15 @@
 import HeroHeader from "./HeroHeader";
 import SearchPanel from "../SearchPanel/SearchPanel";
 
-export default function Hero() {
+type Props = {
+  onRecommend: (input: string, type: "movie" | "tv") => void;
+};
+
+export default function Hero({ onRecommend }: Props) {
   return (
     <section>
       <HeroHeader />
-      <SearchPanel />
+      <SearchPanel onRecommend={onRecommend} />
     </section>
   );
 }

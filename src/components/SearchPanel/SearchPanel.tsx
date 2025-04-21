@@ -4,7 +4,11 @@ import InputField from "@/elements/InputField";
 import { searchTMDB } from "@/services/tmdbSearch";
 import Dropdown from "./Dropdown";
 
-export default function SearchPanel() {
+type Props = {
+  onRecommend: (input: string, type: "movie" | "tv") => void;
+};
+
+export default function SearchPanel({ onRecommend }: Props) {
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedType, setSelectedType] = useState<"movie" | "tv">("movie");
@@ -21,8 +25,14 @@ export default function SearchPanel() {
     }
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSuggestions([]);
+    onRecommend(inputValue, selectedType);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
         <Button type="button" onClick={() => setSelectedType("movie")}>
           Movies

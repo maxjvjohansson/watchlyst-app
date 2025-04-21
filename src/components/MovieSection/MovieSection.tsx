@@ -1,21 +1,6 @@
-import { useState, useEffect } from "react";
-import { getTmdbData } from "@/services/tmdb";
 import MovieCard from "../MovieCard/MovieCard";
 
-type MovieData = any;
-
-export default function MovieSection() {
-  const [movies, setMovies] = useState<MovieData[]>([]);
-
-  // Hardcoded movies/series
-  useEffect(() => {
-    Promise.all([
-      getTmdbData(950387, "movie"),
-      getTmdbData(1399, "tv"),
-      getTmdbData(238, "movie"),
-    ]).then(setMovies);
-  }, []);
-
+export default function MovieSection({ movies }: { movies: any[] }) {
   return (
     <>
       <section>
