@@ -5,7 +5,12 @@ export const Footer = () => {
   return (
     <footer>
       <div className="footer-logo-container">
-        <Image className="footer-logo" src={WathLystLogo} />
+        <Image
+          className="footer-logo"
+          src={WathLystLogo}
+          height="20"
+          width="20"
+        />
         <span>WatchLyst</span>
       </div>
       <small className="copyright">

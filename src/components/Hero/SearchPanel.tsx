@@ -21,7 +21,7 @@ export default function SearchPanel() {
           onClick={() => setIsToggled("left")}
           className={isToggled === "left" ? "active" : ""}
         >
-          <Image src={Filmstrip}></Image>
+          <Image src={Filmstrip} height="20" width="20"></Image>
           Movies
         </Button>
         <Button
@@ -29,7 +29,7 @@ export default function SearchPanel() {
           onClick={() => setIsToggled("right")}
           className={isToggled === "right" ? "active" : ""}
         >
-          <Image src={TvScreen}></Image>
+          <Image src={TvScreen} height="20" width="20"></Image>
           Series
         </Button>
       </div>

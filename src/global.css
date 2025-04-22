@@ -12,6 +12,8 @@ nav {
 
 .nav-logo-container span {
     align-self: flex-end;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
     font-weight: 700;
 }
 
@@ -20,8 +22,8 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 90vh;
     gap: 3rem;
+    min-height: 100vh;
 }
 
 header {
@@ -193,11 +195,6 @@ footer {
     nav {
         padding: 1rem 4rem;
         border-bottom: none;
-    }
-
-    .nav-logo-container span {
-        font-size: 1.5rem;
-        line-height: 1.5rem;
     }
 
     main {
