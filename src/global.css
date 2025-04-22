@@ -12,6 +12,7 @@ nav {
 
 .nav-logo-container span {
     align-self: flex-end;
+    font-weight: 700;
 }
 
 main {
@@ -19,6 +20,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 100vh;
     gap: 3rem;
 }
 
@@ -81,6 +83,10 @@ form {
     transition: all 150ms ease-in-out;
 }
 
+.toggle span img {
+    display: none;
+}
+
 .toggle .active {
     background-color: var(--color-primary);
 }
@@ -131,7 +137,6 @@ footer {
     justify-content: center;
     gap: 1rem;
     background-color: var(--color-card-bg);
-    height: 20vh;
     font-size: 0.875rem;
 }
 
@@ -157,4 +162,69 @@ footer {
     align-self: center;
     font-size: 0.875rem;
     color: var(--color-extra-muted);
+}
+
+@media (min-width: 1200px) {
+    nav {
+        padding: 1rem 4rem;
+    }
+
+    .nav-logo-container span {
+        font-size: 1.5rem;
+    }
+
+    main {
+        gap: 9rem;
+    }
+
+    h1 {
+        font-size: 4.5rem;
+    }
+
+    p {
+        font-size: 1.25rem;
+    }
+
+    form {
+        width: 55%;
+    }
+
+    .toggle {
+        display: flex;
+        justify-content: center;
+        background: none;
+        gap: 1rem;
+    }
+
+    .toggle span {
+        display: flex;
+        gap: 0.5rem;
+        font-weight: 400;
+    }
+
+    .toggle span img {
+        display: block;
+    }
+
+    input {
+        height: 3.5rem;
+    }
+
+    button {
+        transition: all 150ms ease-in-out;
+    }
+
+    button:hover {
+        background-color: var(--color-primary-hover);
+    }
+
+    footer {
+        padding: 2rem 5rem;
+        background-color: var(--color-bg);
+    }
+
+    .footer-logo-container span {
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
 }
