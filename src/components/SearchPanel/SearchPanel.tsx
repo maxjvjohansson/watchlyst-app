@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useRef, useEffect } from "react";
 import Button from "@/elements/Button";
 import InputField from "@/elements/InputField";
 import { searchTMDB } from "@/services/tmdbSearch";
@@ -23,6 +23,22 @@ export default function SearchPanel({
   setSelectedType,
 }: Props) {
   const [suggestions, setSuggestions] = useState([]);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target as Node)
+      ) {
+        setSuggestions([]);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -68,21 +84,23 @@ export default function SearchPanel({
           TV-show
         </Button>
       </div>
-      <InputField
-        id="search"
-        value={inputValue}
-        onChange={handleChange}
-        placeholder={getPlaceholder()}
-      />
-      {suggestions.length > 0 && (
-        <Dropdown
-          suggestions={suggestions}
-          onSelect={(item) => {
-            setInputValue(`${item.title} (${item.year})`);
-            setSuggestions([]);
-          }}
+      <div ref={wrapperRef} className="dropdown-wrapper">
+        <InputField
+          id="search"
+          value={inputValue}
+          onChange={handleChange}
+          placeholder={getPlaceholder()}
         />
-      )}
+        {suggestions.length > 0 && (
+          <Dropdown
+            suggestions={suggestions}
+            onSelect={(item) => {
+              setInputValue(`${item.title} (${item.year})`);
+              setSuggestions([]);
+            }}
+          />
+        )}
+      </div>
       <Button type="submit">Get Recommendations</Button>
     </form>
   );
