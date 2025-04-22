@@ -34,7 +34,7 @@ export async function getTmdbData(id: number, type: TmdbType) {
     title: type === "movie" ? info.title : info.name,
     year,
     posterUrl: `https://image.tmdb.org/t/p/w342${info.poster_path}`,
-    rating: Number(info.vote_average).toFixed(1),
+    rating: parseFloat(info.vote_average.toFixed(1)),
     overview: info.overview,
     genres: info.genres.slice(0, 3).map((g: { name: string }) => g.name),
     trailerUrl: trailer ? `https://youtube.com/watch?v=${trailer.key}` : null,

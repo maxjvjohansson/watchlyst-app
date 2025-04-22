@@ -1,8 +1,39 @@
 import Button from "@/elements/Button";
 import MovieCard from "../MovieCard/MovieCard";
+import { getNewRecommendationsFromAI } from "@/services/openai";
+import { getTmdbIdsFromAIResults } from "@/services/tmdbSearch";
+import { getTmdbData } from "@/services/tmdb";
+import { MovieData } from "@/types";
 
-export default function MovieSection({ movies }: { movies: any[] }) {
-  const handleNewRecommendations = () => {};
+type Props = {
+  movies: MovieData[];
+  inputValue: string;
+  selectedType: "movie" | "tv";
+  onUpdateMovies: (movies: MovieData[]) => void;
+};
+
+export default function MovieSection({
+  movies,
+  onUpdateMovies,
+  inputValue,
+  selectedType,
+}: Props) {
+  const handleNewRecommendations = async () => {
+    const exclude = movies.map((m) => `"${m.title} (${m.year})"`);
+
+    const aiResults = await getNewRecommendationsFromAI(
+      inputValue,
+      selectedType,
+      exclude
+    );
+
+    const ids = await getTmdbIdsFromAIResults(aiResults, selectedType);
+    const fullData: MovieData[] = await Promise.all(
+      ids.map(({ id, type }) => getTmdbData(id, type))
+    );
+
+    onUpdateMovies(fullData);
+  };
   return (
     <>
       <section>

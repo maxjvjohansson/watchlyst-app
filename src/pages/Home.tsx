@@ -1,3 +1,4 @@
+import { MovieData } from "@/types";
 import Hero from "@/components/Hero/Hero";
 import MovieSection from "@/components/MovieSection/MovieSection";
 import { getRecommendationsFromAI } from "@/services/openai";
@@ -6,7 +7,9 @@ import { getTmdbIdsFromAIResults } from "@/services/tmdbSearch";
 import { useState } from "react";
 
 export default function HomePage() {
-  const [movies, setMovies] = useState<any[]>([]);
+  const [movies, setMovies] = useState<MovieData[]>([]);
+  const [inputValue, setInputValue] = useState("");
+  const [selectedType, setSelectedType] = useState<"movie" | "tv">("movie");
 
   const handleRecommendations = async (input: string, type: "movie" | "tv") => {
     const aiResults = await getRecommendationsFromAI(input, type);
@@ -21,8 +24,19 @@ export default function HomePage() {
 
   return (
     <>
-      <Hero onRecommend={handleRecommendations} />
-      <MovieSection movies={movies} />
+      <Hero
+        onRecommend={handleRecommendations}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        selectedType={selectedType}
+        setSelectedType={setSelectedType}
+      />
+      <MovieSection
+        movies={movies}
+        onUpdateMovies={setMovies}
+        inputValue={inputValue}
+        selectedType={selectedType}
+      />
     </>
   );
 }

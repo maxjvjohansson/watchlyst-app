@@ -3,25 +3,10 @@ import Image from "@/elements/Image";
 import WatchProviders from "./WatchProviders";
 import RatingBadge from "./RatingBadge";
 import "./MovieCard.css";
+import { MovieData } from "@/types";
 
 type Props = {
-  data: {
-    id: number;
-    title: string;
-    year: number;
-    posterUrl: string;
-    rating: number;
-    overview: string;
-    genres: string[];
-    trailerUrl: string;
-    imdbUrl: string | null;
-    tmdbUrl: string;
-    watchProviders: {
-      provider_id: number;
-      provider_name: string;
-      logo_path: string;
-    }[];
-  };
+  data: MovieData;
 };
 
 export default function MovieCard({ data }: Props) {
@@ -67,14 +52,16 @@ export default function MovieCard({ data }: Props) {
         >
           {linkLabel}
         </Link>
-        <Link
-          className="link trailer"
-          href={trailerUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Trailer
-        </Link>
+        {trailerUrl && (
+          <Link
+            className="link trailer"
+            href={trailerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Trailer
+          </Link>
+        )}
       </div>
     </article>
   );

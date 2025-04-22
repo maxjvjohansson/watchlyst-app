@@ -5,6 +5,10 @@ import { searchTMDB } from "@/services/tmdbSearch";
 import Dropdown from "./Dropdown";
 
 type Props = {
+  inputValue: string;
+  setInputValue: (value: string) => void;
+  selectedType: "movie" | "tv";
+  setSelectedType: (type: "movie" | "tv") => void;
   onRecommend: (input: string, type: "movie" | "tv") => void;
 };
 

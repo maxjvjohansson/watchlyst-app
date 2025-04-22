@@ -38,15 +38,18 @@ export async function getRecommendationsFromAI(
 
 export async function getNewRecommendationsFromAI(
   input: string,
-  type: "movie" | "tv"
+  type: "movie" | "tv",
+  exclude: string[]
 ): Promise<{ title: string; year: string }[]> {
+  const excludeList = exclude.join(", ");
+
   const prompt =
     type === "movie"
-      ? `I like the movie "${input}". Recommend 6 similar MOVIES based on theme, tone or story. Return strict JSON in this format:
+      ? `I like the movie "${input}". Recommend 6 different MOVIES based on theme, tone or story. Avoid recommending these titles: ${excludeList}. Return strict JSON format:
 [
   { "title": "Movie Title", "year": "YYYY" }
 ]`
-      : `I like the TV series "${input}". Recommend 6 similar TV SERIES based on tone, character arcs or atmosphere. Return strict JSON in this format:
+      : `I like the TV series "${input}". Recommend 6 different TV SERIES based on tone, character arcs or atmosphere. Avoid recommending these titles: ${excludeList}. Return strict JSON format:
 [
   { "title": "Series Title", "year": "YYYY" }
 ]`;
@@ -54,7 +57,7 @@ export async function getNewRecommendationsFromAI(
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [{ role: "user", content: prompt }],
-    temperature: 0.8,
+    temperature: 0.9,
   });
 
   const content = response.choices[0].message.content || "[]";
