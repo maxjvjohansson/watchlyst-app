@@ -41,7 +41,7 @@ h1 {
 header p {
     text-align: center;
     font-weight: 400;
-    color: rgba(156, 163, 175, 1);
+    color: var(--color-muted);
 }
 
 section {
@@ -50,6 +50,7 @@ section {
     justify-content: center;
     flex-direction: column;
     gap: 2rem;
+    width: 100%;
 }
 
 form {
@@ -108,7 +109,7 @@ form input {
 }
 
 form input::placeholder {
-    color: rgba(173, 174, 188, 1);
+    color: var(--color-extra-muted);
 }
 
 form button {
@@ -117,8 +118,43 @@ form button {
     height: 3rem;
     border: none;
     background-color: var(--color-primary);
-    color: white;
+    color: var(--color-text);
     padding: 0.75rem 3.8rem 0.8rem 3.85rem;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
+}
+
+footer {
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    background-color: var(--color-card-bg);
+    height: 20vh;
+    font-size: 0.875rem;
+}
+
+.footer-logo-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.footer-logo-container img {
+    height: 1.3rem;
+    width: 1.3rem;
+}
+
+.footer-logo-container span {
+    font-size: 0.875rem;
+    align-self: flex-end;
+}
+
+.copyright {
+    justify-self: end;
+    align-self: center;
+    font-size: 0.875rem;
+    color: var(--color-extra-muted);
 }
