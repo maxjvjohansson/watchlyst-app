@@ -8,7 +8,12 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="nav-logo-container">
         <Link className="nav-link" href="/">
-          <Image className="nav-logo" src={WatchLystLogo} />
+          <Image
+            className="nav-logo"
+            src={WatchLystLogo}
+            height="20"
+            width="20"
+          />
           <span>WatchLyst</span>
         </Link>
       </div>
