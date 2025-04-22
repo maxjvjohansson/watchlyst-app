@@ -4,7 +4,7 @@ nav {
 }
 
 .nav-logo-container a {
-    display: flex;
+    display: inline-flex;
     justify-content: start;
     align-items: center;
     gap: 0.25rem;
@@ -125,7 +125,7 @@ form button {
     border: none;
     background-color: var(--color-primary);
     color: var(--color-text);
-    padding: 0.75rem 3.8rem 0.8rem 3.85rem;
+    padding: 0rem 3.8rem;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
 }
@@ -167,6 +167,7 @@ footer {
 @media (min-width: 1200px) {
     nav {
         padding: 1rem 4rem;
+        border-bottom: none;
     }
 
     .nav-logo-container span {
@@ -221,6 +222,7 @@ footer {
     footer {
         padding: 2rem 5rem;
         background-color: var(--color-bg);
+        border-top: 1px solid rgba(229, 231, 235, 0.1);
     }
 
     .footer-logo-container span {
