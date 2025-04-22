@@ -69,7 +69,11 @@ export default function SearchPanel({
       <div className="toggle">
         <Button
           type="button"
-          onClick={() => setSelectedType("movie")}
+          onClick={() => {
+            setSelectedType("movie");
+            setInputValue("");
+            setSuggestions([]);
+          }}
           className={selectedType === "movie" ? "active" : ""}
         >
           <Image src={Filmstrip} height="20" width="20"></Image>
@@ -77,7 +81,11 @@ export default function SearchPanel({
         </Button>
         <Button
           type="button"
-          onClick={() => setSelectedType("tv")}
+          onClick={() => {
+            setSelectedType("tv");
+            setInputValue("");
+            setSuggestions([]);
+          }}
           className={selectedType === "tv" ? "active" : ""}
         >
           <Image src={TvScreen} height="20" width="20"></Image>
