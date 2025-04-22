@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useRef, useEffect } from "react";
 import Button from "@/elements/Button";
 import InputField from "@/elements/InputField";
 import { searchTMDB } from "@/services/tmdbSearch";
@@ -15,10 +15,30 @@ type Props = {
   onRecommend: (input: string, type: "movie" | "tv") => void;
 };
 
-export default function SearchPanel({ onRecommend }: Props) {
-  const [inputValue, setInputValue] = useState("");
+export default function SearchPanel({
+  onRecommend,
+  inputValue,
+  setInputValue,
+  selectedType,
+  setSelectedType,
+}: Props) {
   const [suggestions, setSuggestions] = useState([]);
-  const [selectedType, setSelectedType] = useState<"movie" | "tv">("movie");
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target as Node)
+      ) {
+        setSuggestions([]);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -32,6 +52,12 @@ export default function SearchPanel({ onRecommend }: Props) {
     }
   };
 
+  const getPlaceholder = () => {
+    return `Enter a ${
+      selectedType === "movie" ? "movie" : "series"
+    } title you like...`;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSuggestions([]);
@@ -43,7 +69,11 @@ export default function SearchPanel({ onRecommend }: Props) {
       <div className="toggle">
         <Button
           type="button"
-          onClick={() => setSelectedType("movie")}
+          onClick={() => {
+            setSelectedType("movie");
+            setInputValue("");
+            setSuggestions([]);
+          }}
           className={selectedType === "movie" ? "active" : ""}
         >
           <Image src={Filmstrip} height="20" width="20"></Image>
@@ -51,28 +81,34 @@ export default function SearchPanel({ onRecommend }: Props) {
         </Button>
         <Button
           type="button"
-          onClick={() => setSelectedType("tv")}
+          onClick={() => {
+            setSelectedType("tv");
+            setInputValue("");
+            setSuggestions([]);
+          }}
           className={selectedType === "tv" ? "active" : ""}
         >
           <Image src={TvScreen} height="20" width="20"></Image>
           TV-show
         </Button>
       </div>
-      <InputField
-        id="search"
-        value={inputValue}
-        onChange={handleChange}
-        placeholder={"Enter a " + selectedType + " you like..."}
-      />
-      {suggestions.length > 0 && (
-        <Dropdown
-          suggestions={suggestions}
-          onSelect={(item) => {
-            setInputValue(`${item.title} (${item.year})`);
-            setSuggestions([]);
-          }}
+      <div ref={wrapperRef} className="dropdown-wrapper">
+        <InputField
+          id="search"
+          value={inputValue}
+          onChange={handleChange}
+          placeholder={getPlaceholder()}
         />
-      )}
+        {suggestions.length > 0 && (
+          <Dropdown
+            suggestions={suggestions}
+            onSelect={(item) => {
+              setInputValue(`${item.title} (${item.year})`);
+              setSuggestions([]);
+            }}
+          />
+        )}
+      </div>
       <Button type="submit">Get Recommendations</Button>
     </form>
   );

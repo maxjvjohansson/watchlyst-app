@@ -1,5 +1,9 @@
-.dropdown {
+.dropdown-wrapper {
   position: relative;
+}
+
+.dropdown {
+  position: absolute;
   top: 100%;
   background-color: #ffffff;
   color: #000000;

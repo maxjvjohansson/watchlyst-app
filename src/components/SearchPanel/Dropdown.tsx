@@ -23,13 +23,11 @@ export default function Dropdown({ suggestions, onSelect }: Props) {
           className="dropdown-item"
           onClick={() => onSelect(item)}
         >
-          {item.posterUrl && (
-            <Image
-              src={item.posterUrl}
-              alt={item.title}
-              className="dropdown-poster"
-            />
-          )}
+          <Image
+            src={item.posterUrl}
+            alt={item.title}
+            className="dropdown-poster"
+          />
           <span>
             {item.title} ({item.year})
           </span>
