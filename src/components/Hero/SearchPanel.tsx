@@ -7,7 +7,7 @@ import InputField from "@/elements/InputField";
 
 export default function SearchPanel() {
   const [inputValue, setInputValue] = useState("");
-  const [isToggled, setIsToggled] = useState("movies");
+  const [isToggled, setIsToggled] = useState("Movie");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -18,26 +18,26 @@ export default function SearchPanel() {
       <div className="toggle">
         <Button
           type="button"
-          onClick={() => setIsToggled("movies")}
-          className={isToggled === "movies" ? "active" : ""}
+          onClick={() => setIsToggled("Movie")}
+          className={isToggled === "Movie" ? "active" : ""}
         >
           <Image src={Filmstrip} height="20" width="20"></Image>
           Movies
         </Button>
         <Button
           type="button"
-          onClick={() => setIsToggled("series")}
-          className={isToggled === "series" ? "active" : ""}
+          onClick={() => setIsToggled("TV-show")}
+          className={isToggled === "TV-show" ? "active" : ""}
         >
           <Image src={TvScreen} height="20" width="20"></Image>
-          Series
+          TV-show
         </Button>
       </div>
       <InputField
         id="search"
         value={inputValue}
         onChange={handleChange}
-        placeholder="Enter a movie or show you like..."
+        placeholder={"Enter a " + isToggled + " you like..."}
       />
       <Button type="submit">Get Recommendations</Button>
     </form>
