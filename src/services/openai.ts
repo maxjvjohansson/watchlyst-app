@@ -41,23 +41,38 @@ export async function getNewRecommendationsFromAI(
   type: "movie" | "tv",
   exclude: string[]
 ): Promise<{ title: string; year: string }[]> {
-  const excludeList = exclude.join(", ");
+  const fullExcludeList = [`"${input}"`, ...exclude];
 
-  const prompt =
+  const excludeList = fullExcludeList.join(", ");
+
+  const prompt = `I like the ${
+    type === "movie" ? "movie" : "TV series"
+  } "${input}".
+
+Recommend EXACTLY 6 DIFFERENT ${type === "movie" ? "MOVIES" : "TV SERIES"} 
+that match in ${
     type === "movie"
-      ? `I like the movie "${input}". Recommend 6 different MOVIES based on theme, tone or story. Avoid recommending these titles: ${excludeList}. Return strict JSON format:
+      ? "theme, tone, or story"
+      : "tone, character arcs, or atmosphere"
+  }.
+
+IMPORTANT:
+- ONLY recommend ${type === "movie" ? "movies" : "TV series"}.
+- Do NOT include the original ${
+    type === "movie" ? "movie" : "series"
+  } "${input}".
+- Exclude these titles: ${excludeList}.
+- NO documentaries, short films, or miniseries if possible.
+
+Return STRICT JSON ONLY, no explanations:
 [
-  { "title": "Movie Title", "year": "YYYY" }
-]`
-      : `I like the TV series "${input}". Recommend 6 different TV SERIES based on tone, character arcs or atmosphere. Avoid recommending these titles: ${excludeList}. Return strict JSON format:
-[
-  { "title": "Series Title", "year": "YYYY" }
+  { "title": "Title Name", "year": "YYYY" }
 ]`;
 
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [{ role: "user", content: prompt }],
-    temperature: 0.9,
+    temperature: 0.7,
   });
 
   const content = response.choices[0].message.content || "[]";

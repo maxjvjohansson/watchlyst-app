@@ -15,10 +15,14 @@ type Props = {
   onRecommend: (input: string, type: "movie" | "tv") => void;
 };
 
-export default function SearchPanel({ onRecommend }: Props) {
-  const [inputValue, setInputValue] = useState("");
+export default function SearchPanel({
+  onRecommend,
+  inputValue,
+  setInputValue,
+  selectedType,
+  setSelectedType,
+}: Props) {
   const [suggestions, setSuggestions] = useState([]);
-  const [selectedType, setSelectedType] = useState<"movie" | "tv">("movie");
 
   const handleChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
