@@ -20,8 +20,11 @@ export default function Image({
   const fallbackImage = "/fallback_image.svg";
   return (
     <img
-      src={src || fallbackImage}
-      onError={(e) => (e.currentTarget.src = fallbackImage)}
+      src={src ? src : fallbackImage}
+      onError={(e) => {
+        e.currentTarget.onerror = null;
+        e.currentTarget.src = fallbackImage;
+      }}
       alt={alt}
       className={className}
       loading={loading}
