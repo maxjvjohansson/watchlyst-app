@@ -20,7 +20,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    height: 90vh;
     gap: 3rem;
 }
 
@@ -125,7 +125,6 @@ form button {
     border: none;
     background-color: var(--color-primary);
     color: var(--color-text);
-    padding: 0rem 3.8rem;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
 }
@@ -164,6 +163,32 @@ footer {
     color: var(--color-extra-muted);
 }
 
+@media (min-width: 600px) {
+    h1 {
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+}
+
+@media (min-width: 768px) {
+    main {
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        line-height: 3.5rem;
+    }
+
+    main {
+        gap: 6rem;
+    }
+
+    form {
+        width: 80%;
+    }
+}
+
 @media (min-width: 1200px) {
     nav {
         padding: 1rem 4rem;
@@ -172,6 +197,7 @@ footer {
 
     .nav-logo-container span {
         font-size: 1.5rem;
+        line-height: 1.5rem;
     }
 
     main {
@@ -180,10 +206,12 @@ footer {
 
     h1 {
         font-size: 4.5rem;
+        line-height: 4.5rem;
     }
 
     p {
         font-size: 1.25rem;
+        line-height: 1.25rem;
     }
 
     form {
@@ -228,5 +256,6 @@ footer {
     .footer-logo-container span {
         font-weight: 700;
         font-size: 1.5rem;
+        line-height: 1.5rem;
     }
 }
