@@ -1,20 +1,48 @@
 import { ChangeEvent, useState } from "react";
+import Button from "@/elements/Button";
+import InputField from "@/elements/InputField";
+import { searchTMDB } from "@/services/tmdbSearch";
+import Dropdown from "./Dropdown";
 import Filmstrip from "@/assets/icons/filmstrip.svg";
 import TvScreen from "@/assets/icons/tv_screen.svg";
 import Image from "@/elements/Image";
 import Button from "@/elements/Button";
 import InputField from "@/elements/InputField";
 
-export default function SearchPanel() {
-  const [inputValue, setInputValue] = useState("");
-  const [isToggled, setIsToggled] = useState("Movie");
+type Props = {
+  inputValue: string;
+  setInputValue: (value: string) => void;
+  selectedType: "movie" | "tv";
+  setSelectedType: (type: "movie" | "tv") => void;
+  onRecommend: (input: string, type: "movie" | "tv") => void;
+};
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+export default function SearchPanel({ onRecommend }: Props) {
+  const [isToggled, setIsToggled] = useState("Movie");
+  const [inputValue, setInputValue] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [selectedType, setSelectedType] = useState<"movie" | "tv">("movie");
+
+  const handleChange = async (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setInputValue(value);
+
+    if (value.trim().length >= 2) {
+      const results = await searchTMDB(value, selectedType);
+      setSuggestions(results);
+    } else {
+      setSuggestions([]);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSuggestions([]);
+    onRecommend(inputValue, selectedType);
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="toggle">
         <Button
           type="button"
@@ -37,6 +65,17 @@ export default function SearchPanel() {
         id="search"
         value={inputValue}
         onChange={handleChange}
+        placeholder="Enter a movie or show you like..."
+      />
+      {suggestions.length > 0 && (
+        <Dropdown
+          suggestions={suggestions}
+          onSelect={(item) => {
+            setInputValue(`${item.title} (${item.year})`);
+            setSuggestions([]);
+          }}
+        />
+      )}
         placeholder={"Enter a " + isToggled + " you like..."}
       />
       <Button type="submit">Get Recommendations</Button>
