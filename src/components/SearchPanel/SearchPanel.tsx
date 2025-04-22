@@ -32,6 +32,12 @@ export default function SearchPanel({ onRecommend }: Props) {
     }
   };
 
+  const getPlaceholder = () => {
+    return `Enter a ${
+      selectedType === "movie" ? "movie" : "series"
+    } title you like...`;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSuggestions([]);
@@ -62,7 +68,7 @@ export default function SearchPanel({ onRecommend }: Props) {
         id="search"
         value={inputValue}
         onChange={handleChange}
-        placeholder={"Enter a " + selectedType + " you like..."}
+        placeholder={getPlaceholder()}
       />
       {suggestions.length > 0 && (
         <Dropdown
