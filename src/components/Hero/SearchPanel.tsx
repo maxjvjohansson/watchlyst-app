@@ -7,7 +7,7 @@ import InputField from "@/elements/InputField";
 
 export default function SearchPanel() {
   const [inputValue, setInputValue] = useState("");
-  const [isToggled, setIsToggled] = useState("left");
+  const [isToggled, setIsToggled] = useState("movies");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -18,16 +18,16 @@ export default function SearchPanel() {
       <div className="toggle">
         <Button
           type="button"
-          onClick={() => setIsToggled("left")}
-          className={isToggled === "left" ? "active" : ""}
+          onClick={() => setIsToggled("movies")}
+          className={isToggled === "movies" ? "active" : ""}
         >
           <Image src={Filmstrip} height="20" width="20"></Image>
           Movies
         </Button>
         <Button
           type="button"
-          onClick={() => setIsToggled("right")}
-          className={isToggled === "right" ? "active" : ""}
+          onClick={() => setIsToggled("series")}
+          className={isToggled === "series" ? "active" : ""}
         >
           <Image src={TvScreen} height="20" width="20"></Image>
           Series

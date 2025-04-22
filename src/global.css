@@ -19,7 +19,7 @@ nav {
 
 main {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-direction: column;
     gap: 3rem;
@@ -57,7 +57,7 @@ section {
 }
 
 .search-panel {
-    min-height: 90vh;
+    min-height: 70vh;
 }
 
 form {
