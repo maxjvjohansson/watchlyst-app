@@ -1,261 +1,262 @@
 nav {
-    padding: 1rem;
-    border-bottom: 1px solid rgba(229, 231, 235, 0.1);
+  padding: 1rem;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.1);
 }
 
 .nav-logo-container a {
-    display: inline-flex;
-    justify-content: start;
-    align-items: center;
-    gap: 0.25rem;
+  display: inline-flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .nav-logo-container span {
-    align-self: flex-end;
-    font-size: 1.25rem;
-    line-height: 1.25rem;
-    font-weight: 700;
+  align-self: flex-end;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+  font-weight: 700;
 }
 
 main {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    flex-direction: column;
-    gap: 3rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1rem;
 }
 
 h1 {
-    font-size: 2.25rem;
-    text-align: center;
-    line-height: 2.25rem;
-    font-weight: 700;
+  font-size: 2.25rem;
+  text-align: center;
+  line-height: 2.25rem;
+  font-weight: 700;
 }
 
 header p {
-    text-align: center;
-    font-weight: 400;
-    color: var(--color-muted);
+  text-align: center;
+  font-weight: 400;
+  color: var(--color-muted);
 }
 
 section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
 }
 
 .search-panel {
-    min-height: 70vh;
+  min-height: 70vh;
 }
 
 form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    flex-direction: column;
-    background-color: var(--color-bg);
-    width: 90%;
-    padding: 1.5rem 1.5rem;
-    border-radius: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  width: 90%;
+  padding: 1.5rem 1.5rem;
+  border-radius: 0.75rem;
 }
 
 .toggle {
-    display: flex;
-    background-color: var(--color-card-bg);
-    border-radius: 0.5rem;
+  display: flex;
+  background-color: var(--color-card-bg);
+  border-radius: 0.5rem;
 }
 
 .toggle button {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-card-bg);
-    font-weight: 400;
-    transition: all 150ms ease-in-out;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-card-bg);
+  font-weight: 400;
+  transition: all 150ms ease-in-out;
 }
 
 .toggle span img {
-    display: none;
+  display: none;
 }
 
 .toggle .active {
-    background-color: var(--color-primary);
+  background-color: var(--color-primary);
 }
 
 form div {
-    width: 100%;
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 form input {
-    padding: 0 1.25rem 0 2.5rem;
-    height: 100%;
-    width: 100%;
-    border-radius: 0.5rem;
-    background-color: var(--color-card-bg);
-    border: none;
-    font-size: 1rem;
-    font-weight: 400;
-    font-family: "Poppins", sans-serif;
-    background-image: url("/src/assets/icons/search_icon.svg");
-    background-repeat: no-repeat;
-    background-position: center left 0.75rem;
+  padding: 0 1.25rem 0 2.5rem;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: var(--color-card-bg);
+  color: var(--color-text);
+  border: none;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  background-image: url("/src/assets/icons/search_icon.svg");
+  background-repeat: no-repeat;
+  background-position: center left 0.75rem;
 }
 
 form input::placeholder {
-    color: var(--color-extra-muted);
+  color: var(--color-extra-muted);
 }
 
 form button {
-    border-radius: 0.5rem;
-    width: 100%;
-    height: 3rem;
-    border: none;
-    background-color: var(--color-primary);
-    color: var(--color-text);
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 3rem;
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
 }
 
 footer {
-    padding: 2rem 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
-    background-color: var(--color-card-bg);
-    font-size: 0.875rem;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  background-color: var(--color-card-bg);
+  font-size: 0.875rem;
 }
 
 .footer-logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .footer-logo-container img {
-    height: 1.3rem;
-    width: 1.3rem;
+  height: 1.3rem;
+  width: 1.3rem;
 }
 
 .footer-logo-container span {
-    font-size: 0.875rem;
-    align-self: flex-end;
+  font-size: 0.875rem;
+  align-self: flex-end;
 }
 
 .copyright {
-    justify-self: end;
-    align-self: center;
-    font-size: 0.875rem;
-    color: var(--color-extra-muted);
+  justify-self: end;
+  align-self: center;
+  font-size: 0.875rem;
+  color: var(--color-extra-muted);
 }
 
 @media (min-width: 600px) {
-    h1 {
-        font-size: 3rem;
-        line-height: 3rem;
-    }
+  h1 {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
 }
 
 @media (min-width: 768px) {
-    main {
-        justify-content: center;
-    }
+  main {
+    justify-content: center;
+  }
 
-    h1 {
-        font-size: 3.5rem;
-        line-height: 3.5rem;
-    }
+  h1 {
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+  }
 
-    main {
-        gap: 6rem;
-    }
+  main {
+    gap: 6rem;
+  }
 
-    form {
-        width: 80%;
-    }
+  form {
+    width: 80%;
+  }
 }
 
 @media (min-width: 1200px) {
-    nav {
-        padding: 1rem 4rem;
-        border-bottom: none;
-    }
+  nav {
+    padding: 1rem 4rem;
+    border-bottom: none;
+  }
 
-    main {
-        gap: 9rem;
-    }
+  main {
+    gap: 9rem;
+  }
 
-    h1 {
-        font-size: 4.5rem;
-        line-height: 4.5rem;
-    }
+  h1 {
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+  }
 
-    p {
-        font-size: 1.25rem;
-        line-height: 1.25rem;
-    }
+  p {
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+  }
 
-    form {
-        width: 55%;
-    }
+  form {
+    width: 55%;
+  }
 
-    .toggle {
-        display: flex;
-        justify-content: center;
-        background: none;
-        gap: 1rem;
-    }
+  .toggle {
+    display: flex;
+    justify-content: center;
+    background: none;
+    gap: 1rem;
+  }
 
-    .toggle span {
-        display: flex;
-        gap: 0.5rem;
-        font-weight: 400;
-    }
+  .toggle span {
+    display: flex;
+    gap: 0.5rem;
+    font-weight: 400;
+  }
 
-    .toggle span img {
-        display: block;
-    }
+  .toggle span img {
+    display: block;
+  }
 
-    input {
-        height: 3.5rem;
-    }
+  input {
+    height: 3.5rem;
+  }
 
-    button {
-        transition: all 150ms ease-in-out;
-    }
+  button {
+    transition: all 150ms ease-in-out;
+  }
 
-    button:hover {
-        background-color: var(--color-primary-hover);
-    }
+  button:hover {
+    background-color: var(--color-primary-hover);
+  }
 
-    footer {
-        padding: 2rem 5rem;
-        background-color: var(--color-bg);
-        border-top: 1px solid rgba(229, 231, 235, 0.1);
-    }
+  footer {
+    padding: 2rem 5rem;
+    background-color: var(--color-bg);
+    border-top: 1px solid rgba(229, 231, 235, 0.1);
+  }
 
-    .footer-logo-container span {
-        font-weight: 700;
-        font-size: 1.25rem;
-        line-height: 1.25rem;
-    }
+  .footer-logo-container span {
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+  }
 }

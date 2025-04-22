@@ -6,8 +6,6 @@ import Dropdown from "./Dropdown";
 import Filmstrip from "@/assets/icons/filmstrip.svg";
 import TvScreen from "@/assets/icons/tv_screen.svg";
 import Image from "@/elements/Image";
-import Button from "@/elements/Button";
-import InputField from "@/elements/InputField";
 
 type Props = {
   inputValue: string;
@@ -18,7 +16,6 @@ type Props = {
 };
 
 export default function SearchPanel({ onRecommend }: Props) {
-  const [isToggled, setIsToggled] = useState("Movie");
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedType, setSelectedType] = useState<"movie" | "tv">("movie");
@@ -46,16 +43,16 @@ export default function SearchPanel({ onRecommend }: Props) {
       <div className="toggle">
         <Button
           type="button"
-          onClick={() => setIsToggled("Movie")}
-          className={isToggled === "Movie" ? "active" : ""}
+          onClick={() => setSelectedType("movie")}
+          className={selectedType === "movie" ? "active" : ""}
         >
           <Image src={Filmstrip} height="20" width="20"></Image>
           Movies
         </Button>
         <Button
           type="button"
-          onClick={() => setIsToggled("TV-show")}
-          className={isToggled === "TV-show" ? "active" : ""}
+          onClick={() => setSelectedType("tv")}
+          className={selectedType === "tv" ? "active" : ""}
         >
           <Image src={TvScreen} height="20" width="20"></Image>
           TV-show
@@ -65,7 +62,7 @@ export default function SearchPanel({ onRecommend }: Props) {
         id="search"
         value={inputValue}
         onChange={handleChange}
-        placeholder="Enter a movie or show you like..."
+        placeholder={"Enter a " + selectedType + " you like..."}
       />
       {suggestions.length > 0 && (
         <Dropdown
@@ -76,8 +73,6 @@ export default function SearchPanel({ onRecommend }: Props) {
           }}
         />
       )}
-        placeholder={"Enter a " + isToggled + " you like..."}
-      />
       <Button type="submit">Get Recommendations</Button>
     </form>
   );
