@@ -23,7 +23,6 @@ main {
     align-items: center;
     flex-direction: column;
     gap: 3rem;
-    min-height: 100vh;
 }
 
 header {
@@ -55,6 +54,10 @@ section {
     flex-direction: column;
     gap: 2rem;
     width: 100%;
+}
+
+.search-panel {
+    min-height: 90vh;
 }
 
 form {

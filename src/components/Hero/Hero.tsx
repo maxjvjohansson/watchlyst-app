@@ -3,7 +3,7 @@ import SearchPanel from "./SearchPanel";
 
 export default function Hero() {
   return (
-    <section>
+    <section className="search-panel">
       <HeroHeader />
       <SearchPanel />
     </section>
