@@ -3,6 +3,11 @@ import Button from "@/elements/Button";
 import InputField from "@/elements/InputField";
 import { searchTMDB } from "@/services/tmdbSearch";
 import Dropdown from "./Dropdown";
+import Filmstrip from "@/assets/icons/filmstrip.svg";
+import TvScreen from "@/assets/icons/tv_screen.svg";
+import Image from "@/elements/Image";
+import Button from "@/elements/Button";
+import InputField from "@/elements/InputField";
 
 type Props = {
   inputValue: string;
@@ -13,6 +18,7 @@ type Props = {
 };
 
 export default function SearchPanel({ onRecommend }: Props) {
+  const [isToggled, setIsToggled] = useState("Movie");
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedType, setSelectedType] = useState<"movie" | "tv">("movie");
@@ -37,12 +43,22 @@ export default function SearchPanel({ onRecommend }: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <Button type="button" onClick={() => setSelectedType("movie")}>
+      <div className="toggle">
+        <Button
+          type="button"
+          onClick={() => setIsToggled("Movie")}
+          className={isToggled === "Movie" ? "active" : ""}
+        >
+          <Image src={Filmstrip} height="20" width="20"></Image>
           Movies
         </Button>
-        <Button type="button" onClick={() => setSelectedType("tv")}>
-          Series
+        <Button
+          type="button"
+          onClick={() => setIsToggled("TV-show")}
+          className={isToggled === "TV-show" ? "active" : ""}
+        >
+          <Image src={TvScreen} height="20" width="20"></Image>
+          TV-show
         </Button>
       </div>
       <InputField
@@ -60,6 +76,8 @@ export default function SearchPanel({ onRecommend }: Props) {
           }}
         />
       )}
+        placeholder={"Enter a " + isToggled + " you like..."}
+      />
       <Button type="submit">Get Recommendations</Button>
     </form>
   );
