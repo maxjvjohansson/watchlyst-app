@@ -14,6 +14,11 @@ export default function HomePage() {
 
   const handleRecommendations = async (input: string, type: "movie" | "tv") => {
     setErrorMessage("");
+
+    if (!input.trim()) {
+      setErrorMessage("You must provide a title.");
+      return;
+    }
     try {
       const aiResults = await getRecommendationsFromAI(input, type);
       const ids = await getTmdbIdsFromAIResults(aiResults, type);

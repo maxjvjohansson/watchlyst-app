@@ -77,6 +77,11 @@ export default function SearchPanel({
     setSuggestions([]);
     setErrorMessage("");
     onRecommend(inputValue, selectedType);
+
+    if (!inputValue.trim()) {
+      setErrorMessage("Please enter a title before getting recommendations.");
+      return;
+    }
   };
 
   return (
@@ -116,6 +121,7 @@ export default function SearchPanel({
             value={inputValue}
             onChange={handleChange}
             placeholder={getPlaceholder()}
+            required
           />
           {suggestions.length > 0 && (
             <Dropdown
