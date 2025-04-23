@@ -15,6 +15,7 @@ type Props = {
   onRecommend: (input: string, type: "movie" | "tv") => void;
   errorMessage: string;
   setErrorMessage: (msg: string) => void;
+  onUpdateMovies: (movies: MovieData[]) => void;
 };
 
 export default function SearchPanel({
@@ -25,6 +26,7 @@ export default function SearchPanel({
   setSelectedType,
   errorMessage,
   setErrorMessage,
+  onUpdateMovies,
 }: Props) {
   const [suggestions, setSuggestions] = useState([]);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -48,6 +50,10 @@ export default function SearchPanel({
     const value = event.target.value;
     setInputValue(value);
     setErrorMessage("");
+
+    if (value.trim() === "") {
+      onUpdateMovies([]);
+    }
 
     if (value.trim().length >= 2) {
       try {
@@ -95,6 +101,7 @@ export default function SearchPanel({
               setInputValue("");
               setSuggestions([]);
               setErrorMessage("");
+              onUpdateMovies([]);
             }}
             className={selectedType === "movie" ? "active" : ""}
           >
@@ -108,6 +115,7 @@ export default function SearchPanel({
               setInputValue("");
               setSuggestions([]);
               setErrorMessage("");
+              onUpdateMovies([]);
             }}
             className={selectedType === "tv" ? "active" : ""}
           >

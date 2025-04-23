@@ -9,6 +9,7 @@ type Props = {
   setSelectedType: (type: "movie" | "tv") => void;
   errorMessage: string;
   setErrorMessage: (msg: string) => void;
+  onUpdateMovies: (movies: MovieData[]) => void;
 };
 
 export default function Hero({
@@ -19,6 +20,7 @@ export default function Hero({
   setSelectedType,
   errorMessage,
   setErrorMessage,
+  onUpdateMovies,
 }: Props) {
   return (
     <section className="search-panel">
@@ -31,6 +33,7 @@ export default function Hero({
         setSelectedType={setSelectedType}
         errorMessage={errorMessage}
         setErrorMessage={setErrorMessage}
+        onUpdateMovies={onUpdateMovies}
       />
     </section>
   );

@@ -46,6 +46,7 @@ export default function HomePage() {
         setSelectedType={setSelectedType}
         errorMessage={errorMessage}
         setErrorMessage={setErrorMessage}
+        onUpdateMovies={setMovies}
       />
       <MovieSection
         movies={movies}
