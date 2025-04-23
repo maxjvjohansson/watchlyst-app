@@ -6,6 +6,7 @@ import Dropdown from "./Dropdown";
 import Filmstrip from "@/assets/icons/filmstrip.svg";
 import TvScreen from "@/assets/icons/tv_screen.svg";
 import Image from "@/elements/Image";
+import { MovieData } from "@/types";
 
 type Props = {
   inputValue: string;

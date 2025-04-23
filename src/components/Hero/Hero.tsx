@@ -1,5 +1,6 @@
 import HeroHeader from "./HeroHeader";
 import SearchPanel from "../SearchPanel/SearchPanel";
+import { MovieData } from "@/types";
 
 type Props = {
   onRecommend: (input: string, type: "movie" | "tv") => void;
