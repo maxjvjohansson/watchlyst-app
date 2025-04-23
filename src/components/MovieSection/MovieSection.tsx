@@ -10,6 +10,7 @@ type Props = {
   inputValue: string;
   selectedType: "movie" | "tv";
   onUpdateMovies: (movies: MovieData[]) => void;
+  setErrorMessage: (msg: string) => void;
 };
 
 export default function MovieSection({
@@ -17,22 +18,29 @@ export default function MovieSection({
   onUpdateMovies,
   inputValue,
   selectedType,
+  setErrorMessage,
 }: Props) {
   const handleNewRecommendations = async () => {
-    const exclude = movies.map((m) => `"${m.title} (${m.year})"`);
+    setErrorMessage("");
+    try {
+      const exclude = movies.map((m) => `"${m.title} (${m.year})"`);
 
-    const aiResults = await getNewRecommendationsFromAI(
-      inputValue,
-      selectedType,
-      exclude
-    );
+      const aiResults = await getNewRecommendationsFromAI(
+        inputValue,
+        selectedType,
+        exclude
+      );
 
-    const ids = await getTmdbIdsFromAIResults(aiResults, selectedType);
-    const fullData: MovieData[] = await Promise.all(
-      ids.map(({ id, type }) => getTmdbData(id, type))
-    );
+      const ids = await getTmdbIdsFromAIResults(aiResults, selectedType);
+      const fullData: MovieData[] = await Promise.all(
+        ids.map(({ id, type }) => getTmdbData(id, type))
+      );
 
-    onUpdateMovies(fullData);
+      onUpdateMovies(fullData);
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("Failed to fetch new recommendations. Please try again!");
+    }
   };
   return (
     <>

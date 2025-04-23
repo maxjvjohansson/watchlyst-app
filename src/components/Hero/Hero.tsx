@@ -7,6 +7,8 @@ type Props = {
   setInputValue: (value: string) => void;
   selectedType: "movie" | "tv";
   setSelectedType: (type: "movie" | "tv") => void;
+  errorMessage: string;
+  setErrorMessage: (msg: string) => void;
 };
 
 export default function Hero({
@@ -15,6 +17,8 @@ export default function Hero({
   setInputValue,
   selectedType,
   setSelectedType,
+  errorMessage,
+  setErrorMessage,
 }: Props) {
   return (
     <section className="search-panel">
@@ -25,6 +29,8 @@ export default function Hero({
         setInputValue={setInputValue}
         selectedType={selectedType}
         setSelectedType={setSelectedType}
+        errorMessage={errorMessage}
+        setErrorMessage={setErrorMessage}
       />
     </section>
   );
