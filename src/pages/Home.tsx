@@ -10,16 +10,30 @@ export default function HomePage() {
   const [movies, setMovies] = useState<MovieData[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [selectedType, setSelectedType] = useState<"movie" | "tv">("movie");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleRecommendations = async (input: string, type: "movie" | "tv") => {
-    const aiResults = await getRecommendationsFromAI(input, type);
-    const ids = await getTmdbIdsFromAIResults(aiResults, type);
+    setErrorMessage("");
 
-    const fullData = await Promise.all(
-      ids.map(({ id, type }) => getTmdbData(id, type))
-    );
+    if (!input.trim()) {
+      setErrorMessage("You must provide a title.");
+      return;
+    }
+    try {
+      const aiResults = await getRecommendationsFromAI(input, type);
+      const ids = await getTmdbIdsFromAIResults(aiResults, type);
 
-    setMovies(fullData);
+      const fullData = await Promise.all(
+        ids.map(({ id, type }) => getTmdbData(id, type))
+      );
+
+      setMovies(fullData);
+    } catch (err) {
+      console.error(err);
+      setErrorMessage(
+        "Something went wrong while fetching recommendations. Please try again"
+      );
+    }
   };
 
   return (
@@ -30,12 +44,16 @@ export default function HomePage() {
         setInputValue={setInputValue}
         selectedType={selectedType}
         setSelectedType={setSelectedType}
+        errorMessage={errorMessage}
+        setErrorMessage={setErrorMessage}
+        onUpdateMovies={setMovies}
       />
       <MovieSection
         movies={movies}
         onUpdateMovies={setMovies}
         inputValue={inputValue}
         selectedType={selectedType}
+        setErrorMessage={setErrorMessage}
       />
     </>
   );
