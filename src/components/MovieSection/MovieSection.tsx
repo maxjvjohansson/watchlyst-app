@@ -34,14 +34,19 @@ export default function MovieSection({
 
     onUpdateMovies(fullData);
   };
+
   return (
     <>
       <section>
-        <div>
+        <div className="recommendation-title-container">
           <h2>Recommended for You</h2>
-          <div>
+          <div className="already-watched">
             <p>Already watched every title?</p>
-            <Button type="button" onClick={handleNewRecommendations}>
+            <Button
+              type="button"
+              onClick={handleNewRecommendations}
+              className="new-recommendation-button"
+            >
               Get New Recommendations
             </Button>
           </div>
