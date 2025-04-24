@@ -12,5 +12,6 @@ import "./assets/css/movie-section.css";
 import "./assets/css/footer.css";
 import "./assets/css/movie-card.css";
 import "./assets/css/rating-badge.css";
+import "./assets/css/skeleton.css";
 
 createRoot(document.getElementById("root")!).render(<App />);

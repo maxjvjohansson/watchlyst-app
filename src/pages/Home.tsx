@@ -11,6 +11,7 @@ export default function HomePage() {
   const [inputValue, setInputValue] = useState("");
   const [selectedType, setSelectedType] = useState<"movie" | "tv">("movie");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleRecommendations = async (input: string, type: "movie" | "tv") => {
     setErrorMessage("");
@@ -19,6 +20,9 @@ export default function HomePage() {
       setErrorMessage("You must provide a title.");
       return;
     }
+
+    setIsLoading(true);
+
     try {
       const aiResults = await getRecommendationsFromAI(input, type);
       const ids = await getTmdbIdsFromAIResults(aiResults, type);
@@ -33,6 +37,8 @@ export default function HomePage() {
       setErrorMessage(
         "Something went wrong while fetching recommendations. Please try again"
       );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -52,6 +58,7 @@ export default function HomePage() {
         movies={movies}
         onUpdateMovies={setMovies}
         inputValue={inputValue}
+        loading={isLoading}
         selectedType={selectedType}
         setErrorMessage={setErrorMessage}
       />

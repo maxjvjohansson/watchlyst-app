@@ -4,6 +4,7 @@ import { getNewRecommendationsFromAI } from "@/services/openai";
 import { getTmdbIdsFromAIResults } from "@/services/tmdbSearch";
 import { getTmdbData } from "@/services/tmdb";
 import { MovieData } from "@/types";
+import MovieCardSkeleton from "../MovieCard/MovieCardSkeleton";
 
 type Props = {
   movies: MovieData[];
@@ -11,12 +12,14 @@ type Props = {
   selectedType: "movie" | "tv";
   onUpdateMovies: (movies: MovieData[]) => void;
   setErrorMessage: (msg: string) => void;
+  loading: boolean;
 };
 
 export default function MovieSection({
   movies,
   onUpdateMovies,
   inputValue,
+  loading,
   selectedType,
   setErrorMessage,
 }: Props) {
@@ -61,9 +64,11 @@ export default function MovieSection({
         </div>
       </section>
       <section className="moviecard-section">
-        {movies.map((m) => (
-          <MovieCard key={m.id} data={m} />
-        ))}
+        {loading
+          ? Array.from({ length: 6 }).map((_, i) => (
+              <MovieCardSkeleton key={i} />
+            ))
+          : movies.map((m) => <MovieCard key={m.id} data={m} />)}
       </section>
     </>
   );
