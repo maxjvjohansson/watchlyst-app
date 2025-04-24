@@ -1,0 +1,119 @@
+.search-panel {
+    min-height: 70vh;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-direction: column;
+    background-color: var(--color-bg);
+    width: 90%;
+    padding: 1.5rem 1.5rem;
+    border-radius: 0.75rem;
+}
+
+.toggle {
+    display: flex;
+    background-color: var(--color-element-bg);
+    border-radius: 0.5rem;
+}
+
+.toggle button {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-element-bg);
+    font-weight: 400;
+    transition: all 150ms ease-in-out;
+}
+
+.toggle span img {
+    display: none;
+}
+
+.toggle .active {
+    background-color: var(--color-primary);
+}
+
+form div {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input {
+    padding: 0 1.25rem 0 2.5rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: var(--color-element-bg);
+    color: var(--color-text);
+    border: none;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    background-image: url("/src/assets/icons/search_icon.svg");
+    background-repeat: no-repeat;
+    background-position: center left 0.75rem;
+}
+
+form input::placeholder {
+    color: var(--color-extra-muted);
+}
+
+form button {
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 3rem;
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+@media (min-width: 600px) {
+    form {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    form {
+        width: 80%;
+        max-width: 680px;
+    }
+}
+
+@media (min-width: 1200px) {
+    form {
+        width: 55%;
+        max-width: 990px;
+    }
+
+    .toggle {
+        display: flex;
+        justify-content: center;
+        background: none;
+        gap: 1rem;
+    }
+
+    .toggle span {
+        display: flex;
+        gap: 0.5rem;
+        font-weight: 400;
+    }
+
+    .toggle span img {
+        display: block;
+    }
+
+    input {
+        height: 3.5rem;
+    }
+}

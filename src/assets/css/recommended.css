@@ -1,0 +1,36 @@
+.recommendation-title-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.already-watched {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+p {
+    font-weight: 400;
+    color: var(--color-muted);
+    text-align: center;
+}
+
+.new-recommendation-button {
+    background-color: var(--color-primary);
+    height: 2.5rem;
+    color: var(--color-text);
+    border-radius: 0.75rem;
+    width: 100%;
+    border: none;
+}
