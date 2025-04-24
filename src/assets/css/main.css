@@ -4,6 +4,7 @@ main {
     align-items: center;
     flex-direction: column;
     gap: 3rem;
+    min-height: 90vh;
 }
 
 @media (min-width: 768px) {

@@ -5,6 +5,7 @@ import { getTmdbIdsFromAIResults } from "@/services/tmdbSearch";
 import { getTmdbData } from "@/services/tmdb";
 import { MovieData } from "@/types";
 import MovieCardSkeleton from "../MovieCard/MovieCardSkeleton";
+import React from "react";
 
 type Props = {
   movies: MovieData[];
@@ -13,6 +14,8 @@ type Props = {
   onUpdateMovies: (movies: MovieData[]) => void;
   setErrorMessage: (msg: string) => void;
   loading: boolean;
+  submitted: boolean;
+  recommendationSectionRef: React.RefObject<HTMLElement | null>;
 };
 
 export default function MovieSection({
@@ -20,6 +23,8 @@ export default function MovieSection({
   onUpdateMovies,
   inputValue,
   loading,
+  recommendationSectionRef,
+  submitted,
   selectedType,
   setErrorMessage,
 }: Props) {
@@ -48,21 +53,23 @@ export default function MovieSection({
 
   return (
     <>
-      <section>
-        <div className="recommendation-title-container">
-          <h2>Recommended for You</h2>
-          <div className="already-watched">
-            <p>Already watched every title?</p>
-            <Button
-              type="button"
-              onClick={handleNewRecommendations}
-              className="new-recommendation-button"
-            >
-              Get New Recommendations
-            </Button>
+      {submitted && (
+        <section ref={recommendationSectionRef}>
+          <div className="recommendation-title-container">
+            <h2>Recommended for You</h2>
+            <div className="already-watched">
+              <p>Already watched every title?</p>
+              <Button
+                type="button"
+                onClick={handleNewRecommendations}
+                className="new-recommendation-button"
+              >
+                Get New Recommendations
+              </Button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       <section className="moviecard-section">
         {loading
           ? Array.from({ length: 6 }).map((_, i) => (
