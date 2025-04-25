@@ -68,6 +68,21 @@
   width: 80%;
 }
 
+.movie-overview a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.watch-providers {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .movie-links {
   display: flex;
   justify-content: center;

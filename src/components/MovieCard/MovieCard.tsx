@@ -3,7 +3,6 @@ import Image from "@/elements/Image";
 import WatchProviders from "./WatchProviders";
 import RatingBadge from "./RatingBadge";
 import PlayIcon from "../../assets/icons/play_icon.svg";
-// import "./MovieCard.css";
 import { MovieData } from "@/types";
 
 type Props = {
@@ -27,12 +26,17 @@ export default function MovieCard({ data }: Props) {
   const linkToShow = imdbUrl || tmdbUrl;
   const linkLabel = imdbUrl ? "IMDb" : "TMDB";
 
-  const maxWords = (text: string, limit: number) => {
+  const getTrimmedOverview = (text: string, limit: number) => {
     const words = text.split(" ");
-    if (words.length <= limit) return text;
+    const isTrimmed = words.length > limit;
 
-    return words.slice(0, limit).join(" ") + `... Read More on ${linkLabel}`;
+    return {
+      preview: isTrimmed ? words.slice(0, limit).join(" ") + "..." : text,
+      isTrimmed,
+    };
   };
+
+  const { preview, isTrimmed } = getTrimmedOverview(overview, 16);
 
   return (
     <article className="movie-card">
@@ -51,7 +55,17 @@ export default function MovieCard({ data }: Props) {
           </span>
         ))}
       </div>
-      <p className="movie-overview">{maxWords(overview, 20)}</p>
+      <p className="movie-overview">
+        {preview}
+        {isTrimmed && (
+          <>
+            {" "}
+            <Link href={linkToShow} target="_blank" rel="noopener noreferrer">
+              Read More on {linkLabel}
+            </Link>
+          </>
+        )}
+      </p>
       <WatchProviders providers={watchProviders} tmdbUrl={tmdbUrl} />
       <div className="movie-links">
         <Link
