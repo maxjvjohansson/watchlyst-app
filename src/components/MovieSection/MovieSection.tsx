@@ -72,6 +72,9 @@ export default function MovieSection({
                 Get New Recommendations
               </Button>
             </div>
+            <p className="recommendation-credits">
+              Recommendations powered by OpenAI & The Movie Database (TMDB)
+            </p>
           </div>
         </section>
       )}
