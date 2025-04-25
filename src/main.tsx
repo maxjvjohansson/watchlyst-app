@@ -13,5 +13,7 @@ import "./assets/css/footer.css";
 import "./assets/css/movie-card.css";
 import "./assets/css/rating-badge.css";
 import "./assets/css/skeleton.css";
+import "./assets/css/dropdown.css";
+import "./assets/css/error-message.css";
 
 createRoot(document.getElementById("root")!).render(<App />);
