@@ -1,24 +1,31 @@
 nav {
-    padding: 1rem;
-    border-bottom: 1px solid rgba(229, 231, 235, 0.1);
+  padding: 1rem;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.1);
 }
 
 .nav-logo-container a {
-    display: inline-flex;
-    justify-content: start;
-    align-items: center;
-    gap: 0.25rem;
+  display: inline-flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.25rem;
+  text-decoration: none;
 }
 
 .nav-logo-container span {
-    align-self: flex-end;
-    font-size: 1.25rem;
-    line-height: 1.25rem;
-    font-weight: 700;
+  align-self: flex-end;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.nav-logo-container a:hover {
+  color: var(--color-text);
+  text-decoration: underline;
 }
 
 @media (min-width: 1200px) {
-    nav {
-        padding: 1rem 4rem;
-    }
+  nav {
+    padding: 1rem 4rem;
+  }
 }
