@@ -2,7 +2,8 @@ import Link from "@/elements/Link";
 import Image from "@/elements/Image";
 import WatchProviders from "./WatchProviders";
 import RatingBadge from "./RatingBadge";
-import "./MovieCard.css";
+import PlayIcon from "../../assets/icons/play_icon.svg";
+// import "./MovieCard.css";
 import { MovieData } from "@/types";
 
 type Props = {
@@ -28,8 +29,10 @@ export default function MovieCard({ data }: Props) {
 
   return (
     <article className="movie-card">
-      <RatingBadge rating={rating} />
-      <Image className="movie-poster" src={posterUrl} alt={title} />
+      <div className="poster-wrapper">
+        <RatingBadge rating={rating} />
+        <Image className="movie-poster" src={posterUrl} alt={title} />
+      </div>
       <div className="movie-heading">
         <h2 className="movie-title">{title}</h2>
         <p className="movie-year">{year}</p>
@@ -45,7 +48,7 @@ export default function MovieCard({ data }: Props) {
       <WatchProviders providers={watchProviders} tmdbUrl={tmdbUrl} />
       <div className="movie-links">
         <Link
-          className="tmdb-link"
+          className="link tmdb-link"
           href={linkToShow}
           target="_blank"
           rel="noopener noreferrer"
@@ -54,11 +57,12 @@ export default function MovieCard({ data }: Props) {
         </Link>
         {trailerUrl && (
           <Link
-            className="link trailer"
+            className="link trailer-link"
             href={trailerUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
+            <Image src={PlayIcon}></Image>
             Trailer
           </Link>
         )}

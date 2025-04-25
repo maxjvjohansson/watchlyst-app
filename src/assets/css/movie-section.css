@@ -1,0 +1,22 @@
+@media (min-width: 600px) {
+    .moviecard-section {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .moviecard-section {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        max-width: 700px;
+        justify-items: center;
+        padding-bottom: 3rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .moviecard-section {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1200px;
+    }
+}

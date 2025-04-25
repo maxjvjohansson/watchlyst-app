@@ -1,0 +1,84 @@
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeleton-box {
+    background-color: var(--color-tag-bg);
+    border-radius: 0.75rem;
+    background-image: linear-gradient(90deg, var(--color-tag-bg) 20%, var(--color-tag-bg) 20%, var(--color-element-bg) 40%, var(--color-tag-bg) 100%);
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    border-radius: 0.75rem;
+    animation: shimmer 1.25s linear infinite;
+}
+
+.skeleton-poster {
+    height: 33.5625rem;
+    width: 22.375rem;
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.skeleton-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    height: 1.45rem;
+    width: 2.5rem;
+    z-index: 1000;
+    border-radius: 625rem;
+    background-color: var(--color-card-bg);
+}
+
+.skeleton-title {
+    width: 80%;
+    height: 1.25rem;
+}
+
+.skeleton-year {
+    width: 30%;
+    height: 1rem;
+}
+
+.skeleton-genre-tag {
+    width: 4.5rem;
+    height: 1.5rem;
+}
+
+.skeleton-overview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    height: auto;
+    width: 80%;
+}
+
+.skeleton-line {
+    height: 0.85rem;
+    width: 70%;
+}
+
+.skeleton-line.medium {
+    width: 80%;
+}
+
+.skeleton-line.short {
+    width: 60%;
+}
+
+.skeleton-provider-logo {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.skeleton-link {
+    width: 45%;
+    height: 2.5rem;
+}
