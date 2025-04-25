@@ -60,6 +60,12 @@ export default function SearchPanel({
       onUpdateMovies([]);
     }
 
+    if (value.includes("(") && value.includes(")")) {
+      setSuggestions([]);
+      setErrorMessage("");
+      return;
+    }
+
     if (value.trim().length >= 2) {
       try {
         const results = await searchTMDB(value, selectedType);
@@ -144,6 +150,7 @@ export default function SearchPanel({
               onSelect={(item) => {
                 setInputValue(`${item.title} (${item.year})`);
                 setSuggestions([]);
+                setErrorMessage("");
               }}
             />
           )}
