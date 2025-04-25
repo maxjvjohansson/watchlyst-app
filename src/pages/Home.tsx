@@ -4,13 +4,26 @@ import MovieSection from "@/components/MovieSection/MovieSection";
 import { getRecommendationsFromAI } from "@/services/openai";
 import { getTmdbData } from "@/services/tmdb";
 import { getTmdbIdsFromAIResults } from "@/services/tmdbSearch";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function HomePage() {
   const [movies, setMovies] = useState<MovieData[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [selectedType, setSelectedType] = useState<"movie" | "tv">("movie");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const recommendationSectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (isSubmitted && recommendationSectionRef.current) {
+      recommendationSectionRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [isSubmitted]);
 
   const handleRecommendations = async (input: string, type: "movie" | "tv") => {
     setErrorMessage("");
@@ -19,6 +32,10 @@ export default function HomePage() {
       setErrorMessage("You must provide a title.");
       return;
     }
+
+    setIsLoading(true);
+    setIsSubmitted(true);
+
     try {
       const aiResults = await getRecommendationsFromAI(input, type);
       const ids = await getTmdbIdsFromAIResults(aiResults, type);
@@ -33,6 +50,8 @@ export default function HomePage() {
       setErrorMessage(
         "Something went wrong while fetching recommendations. Please try again"
       );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -52,6 +71,9 @@ export default function HomePage() {
         movies={movies}
         onUpdateMovies={setMovies}
         inputValue={inputValue}
+        loading={isLoading}
+        recommendationSectionRef={recommendationSectionRef}
+        submitted={isSubmitted}
         selectedType={selectedType}
         setErrorMessage={setErrorMessage}
       />

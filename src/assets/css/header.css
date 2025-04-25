@@ -1,0 +1,47 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1rem;
+}
+
+h1 {
+    font-size: 2.25rem;
+    text-align: center;
+    line-height: 2.25rem;
+    font-weight: 700;
+}
+
+header p {
+    text-align: center;
+    font-weight: 400;
+    color: var(--color-muted);
+}
+
+@media (min-width: 600px) {
+    h1 {
+        font-size: 2.5rem;
+        line-height: 4rem;
+    }
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3.25rem;
+        line-height: 4rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 4.5rem;
+        line-height: 5rem;
+    }
+
+    p {
+        font-size: 1.25rem;
+        line-height: 1.25rem;
+    }
+}

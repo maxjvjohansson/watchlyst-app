@@ -28,6 +28,8 @@ export default function WatchProviders({ providers, tmdbUrl }: Props) {
             src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`}
             alt={provider.provider_name}
             title={provider.provider_name}
+            height={"32"}
+            width={"32"}
           />
         </Link>
       ))}
