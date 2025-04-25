@@ -14,21 +14,21 @@
 }
 
 .badge-excellent {
-    background-color: green;
+    background-color: #009900;
 }
 
 .badge-good {
-    background-color: limegreen;
+    background-color: #32cd32;
 }
 
 .badge-okay {
-    background-color: yellow;
+    background-color: #ffff00;
 }
 
 .badge-bad {
-    background-color: orange;
+    background-color: #ffa500;
 }
 
 .badge-terrible {
-    background-color: red;
+    background-color: #ff1a1a;
 }

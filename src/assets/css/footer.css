@@ -7,6 +7,7 @@ footer {
     gap: 1rem;
     background-color: var(--color-card-bg);
     font-size: 0.875rem;
+    border-top: 1px solid rgba(229, 231, 235, 0.1);
 }
 
 .footer-logo-container {
@@ -38,7 +39,6 @@ footer {
     footer {
         padding: 2rem 5rem;
         background-color: var(--color-bg);
-        border-top: 1px solid rgba(229, 231, 235, 0.1);
     }
 
     .footer-logo-container span {

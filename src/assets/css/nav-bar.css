@@ -20,6 +20,5 @@ nav {
 @media (min-width: 1200px) {
     nav {
         padding: 1rem 4rem;
-        border-bottom: none;
     }
 }
