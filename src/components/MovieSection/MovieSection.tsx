@@ -6,6 +6,7 @@ import { getTmdbData } from "@/services/tmdb";
 import { MovieData } from "@/types";
 import MovieCardSkeleton from "../MovieCard/MovieCardSkeleton";
 import React from "react";
+import { useState } from "react";
 
 type Props = {
   movies: MovieData[];
@@ -28,7 +29,9 @@ export default function MovieSection({
   selectedType,
   setErrorMessage,
 }: Props) {
+  const [isLoading, setIsLoading] = useState(false);
   const handleNewRecommendations = async () => {
+    setIsLoading(true);
     setErrorMessage("");
     try {
       const exclude = movies.map((m) => `"${m.title} (${m.year})"`);
@@ -48,6 +51,8 @@ export default function MovieSection({
     } catch (err) {
       console.error(err);
       setErrorMessage("Failed to fetch new recommendations. Please try again!");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -71,7 +76,7 @@ export default function MovieSection({
         </section>
       )}
       <section className="moviecard-section">
-        {loading
+        {loading || isLoading
           ? Array.from({ length: 6 }).map((_, i) => (
               <MovieCardSkeleton key={i} />
             ))
