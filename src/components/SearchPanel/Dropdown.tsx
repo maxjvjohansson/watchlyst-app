@@ -1,5 +1,4 @@
 import Image from "@/elements/Image";
-import "./Dropdown.css";
 
 type Suggestion = {
   id: number;

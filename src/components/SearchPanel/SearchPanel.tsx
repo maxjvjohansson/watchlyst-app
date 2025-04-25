@@ -5,6 +5,7 @@ import { searchTMDB } from "@/services/tmdbSearch";
 import Dropdown from "./Dropdown";
 import Filmstrip from "@/assets/icons/filmstrip.svg";
 import TvScreen from "@/assets/icons/tv_screen.svg";
+import ErrorCross from "@/assets/icons/error_cross.svg";
 import Image from "@/elements/Image";
 import { MovieData } from "@/types";
 
@@ -149,7 +150,17 @@ export default function SearchPanel({
         </div>
         <Button type="submit">Get Recommendations</Button>
       </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && (
+        <p className="error-message">
+          <Image
+            src={ErrorCross}
+            width={20}
+            height={20}
+            alt="Cross symbol"
+          ></Image>
+          {errorMessage}
+        </p>
+      )}
     </>
   );
 }
