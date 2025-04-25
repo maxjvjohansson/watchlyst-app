@@ -1,7 +1,6 @@
 import Link from "@/elements/Link";
 import Image from "../../elements/Image";
 import WatchLystLogo from "@/assets/icons/watchlyst_logo.svg";
-import "./Navbar.css";
 
 export default function Navbar() {
   return (

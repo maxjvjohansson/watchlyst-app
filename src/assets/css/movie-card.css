@@ -1,106 +1,117 @@
 .poster-wrapper {
-    position: relative;
+  position: relative;
 }
 
 .movie-card {
-    display: flex;
-    width: 22.375rem;
-    height: 100%;
-    border-radius: 0.75rem;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    background-color: var(--color-card-bg);
-    padding-bottom: 1rem;
+  display: flex;
+  width: 22.375rem;
+  height: 100%;
+  border-radius: 0.75rem;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--color-card-bg);
+  padding-bottom: 1rem;
 }
 
 .movie-poster {
-    height: auto;
-    width: 22.375rem;
-    border-radius: 0.75rem 0.75rem 0 0;
+  height: auto;
+  width: 22.375rem;
+  border-radius: 0.75rem 0.75rem 0 0;
 }
 
 .movie-heading {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  gap: 0.5rem;
 }
 
 .movie-title {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
 .movie-year {
-    color: var(--color-extra-muted);
-    font-size: 1rem;
-    font-weight: 500;
+  color: var(--color-extra-muted);
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .genre-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    width: 80%;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
 }
 
 .genre-tag {
-    background-color: var(--color-tag-bg);
-    border-radius: 0.75rem;
-    width: auto;
-    height: 1.5rem;
-    padding: 0.75rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.85rem;
-    font-weight: 400;
+  background-color: var(--color-tag-bg);
+  border-radius: 0.75rem;
+  width: auto;
+  height: 1.5rem;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 400;
 }
 
 .movie-overview {
-    font-size: 0.8rem;
-    font-weight: 400;
-    width: 80%;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  font-size: 0.8rem;
+  font-weight: 400;
+  width: 80%;
+}
+
+.movie-overview a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.watch-providers {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .movie-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .link {
-    width: 45%;
-    height: 2.5rem;
-    color: var(--text-color);
-    border-radius: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    transition: all 150ms ease-in-out;
+  width: 45%;
+  height: 2.5rem;
+  color: var(--text-color);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: all 150ms ease-in-out;
 }
 
 .tmdb-link {
-    background-color: var(--color-tag-bg);
+  background-color: var(--color-tag-bg);
 }
 
 .trailer-link {
-    background-color: var(--color-primary);
+  background-color: var(--color-primary);
 }
 
 .link:hover {
-    background-color: var(--color-primary-hover);
+  background-color: var(--color-primary-hover);
 }
