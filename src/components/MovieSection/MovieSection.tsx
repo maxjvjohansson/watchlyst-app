@@ -14,6 +14,7 @@ type Props = {
   onUpdateMovies: (movies: MovieData[]) => void;
   setErrorMessage: (msg: string) => void;
   loading: boolean;
+  setLoading: (value: boolean) => void;
   submitted: boolean;
   recommendationSectionRef: React.RefObject<HTMLElement | null>;
 };
@@ -23,12 +24,14 @@ export default function MovieSection({
   onUpdateMovies,
   inputValue,
   loading,
+  setLoading,
   recommendationSectionRef,
   submitted,
   selectedType,
   setErrorMessage,
 }: Props) {
   const handleNewRecommendations = async () => {
+    setLoading(true);
     setErrorMessage("");
     try {
       const exclude = movies.map((m) => `"${m.title} (${m.year})"`);
@@ -48,6 +51,8 @@ export default function MovieSection({
     } catch (err) {
       console.error(err);
       setErrorMessage("Failed to fetch new recommendations. Please try again!");
+    } finally {
+      setLoading(false);
     }
   };
 

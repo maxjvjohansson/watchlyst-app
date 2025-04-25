@@ -62,6 +62,7 @@ export default function HomePage() {
         inputValue={inputValue}
         setInputValue={setInputValue}
         selectedType={selectedType}
+        setSubmitted={setIsSubmitted}
         setSelectedType={setSelectedType}
         errorMessage={errorMessage}
         setErrorMessage={setErrorMessage}
@@ -72,6 +73,7 @@ export default function HomePage() {
         onUpdateMovies={setMovies}
         inputValue={inputValue}
         loading={isLoading}
+        setLoading={setIsLoading}
         recommendationSectionRef={recommendationSectionRef}
         submitted={isSubmitted}
         selectedType={selectedType}
