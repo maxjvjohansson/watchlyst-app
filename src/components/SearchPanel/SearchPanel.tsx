@@ -2,7 +2,7 @@ import { ChangeEvent, useState, useRef, useEffect } from "react";
 import Button from "@/elements/Button";
 import InputField from "@/elements/InputField";
 import { searchTMDB } from "@/services/tmdbSearch";
-import Dropdown from "./Dropdown";
+import Dropdown from "../Dropdown/Dropdown";
 import Filmstrip from "@/assets/icons/filmstrip.svg";
 import TvScreen from "@/assets/icons/tv_screen.svg";
 import ErrorCross from "@/assets/icons/error_cross.svg";
