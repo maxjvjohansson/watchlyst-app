@@ -8,6 +8,7 @@ type Props = {
   setInputValue: (value: string) => void;
   selectedType: "movie" | "tv";
   setSelectedType: (type: "movie" | "tv") => void;
+  setSubmitted: (value: boolean) => void;
   errorMessage: string;
   setErrorMessage: (msg: string) => void;
   onUpdateMovies: (movies: MovieData[]) => void;
@@ -18,6 +19,7 @@ export default function Hero({
   inputValue,
   setInputValue,
   selectedType,
+  setSubmitted,
   setSelectedType,
   errorMessage,
   setErrorMessage,
@@ -31,6 +33,7 @@ export default function Hero({
         inputValue={inputValue}
         setInputValue={setInputValue}
         selectedType={selectedType}
+        setSubmitted={setSubmitted}
         setSelectedType={setSelectedType}
         errorMessage={errorMessage}
         setErrorMessage={setErrorMessage}

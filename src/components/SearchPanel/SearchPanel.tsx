@@ -14,6 +14,7 @@ type Props = {
   selectedType: "movie" | "tv";
   setSelectedType: (type: "movie" | "tv") => void;
   onRecommend: (input: string, type: "movie" | "tv") => void;
+  setSubmitted: (value: boolean) => void;
   errorMessage: string;
   setErrorMessage: (msg: string) => void;
   onUpdateMovies: (movies: MovieData[]) => void;
@@ -23,6 +24,7 @@ export default function SearchPanel({
   onRecommend,
   inputValue,
   setInputValue,
+  setSubmitted,
   selectedType,
   setSelectedType,
   errorMessage,
@@ -51,6 +53,7 @@ export default function SearchPanel({
     const value = event.target.value;
     setInputValue(value);
     setErrorMessage("");
+    setSubmitted(false);
 
     if (value.trim() === "") {
       onUpdateMovies([]);
@@ -103,6 +106,7 @@ export default function SearchPanel({
               setSuggestions([]);
               setErrorMessage("");
               onUpdateMovies([]);
+              setSubmitted(false);
             }}
             className={selectedType === "movie" ? "active" : ""}
           >
@@ -117,6 +121,7 @@ export default function SearchPanel({
               setSuggestions([]);
               setErrorMessage("");
               onUpdateMovies([]);
+              setSubmitted(false);
             }}
             className={selectedType === "tv" ? "active" : ""}
           >
