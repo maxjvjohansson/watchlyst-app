@@ -27,6 +27,13 @@ export default function MovieCard({ data }: Props) {
   const linkToShow = imdbUrl || tmdbUrl;
   const linkLabel = imdbUrl ? "IMDb" : "TMDB";
 
+  const maxWords = (text: string, limit: number) => {
+    const words = text.split(" ");
+    if (words.length <= limit) return text;
+
+    return words.slice(0, limit).join(" ") + `... Read More on ${linkLabel}`;
+  };
+
   return (
     <article className="movie-card">
       <div className="poster-wrapper">
@@ -44,7 +51,7 @@ export default function MovieCard({ data }: Props) {
           </span>
         ))}
       </div>
-      <p className="movie-overview">{overview}</p>
+      <p className="movie-overview">{maxWords(overview, 20)}</p>
       <WatchProviders providers={watchProviders} tmdbUrl={tmdbUrl} />
       <div className="movie-links">
         <Link
