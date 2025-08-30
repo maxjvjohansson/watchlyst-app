@@ -7,31 +7,20 @@ import Filmstrip from "@/assets/icons/filmstrip.svg";
 import TvScreen from "@/assets/icons/tv_screen.svg";
 import ErrorCross from "@/assets/icons/error_cross.svg";
 import Image from "@/elements/Image";
-import { MovieData } from "@/types";
+import { useSearch } from "@/context/SearchContext";
 
-type Props = {
-  inputValue: string;
-  setInputValue: (value: string) => void;
-  selectedType: "movie" | "tv";
-  setSelectedType: (type: "movie" | "tv") => void;
-  onRecommend: (input: string, type: "movie" | "tv") => void;
-  setSubmitted: (value: boolean) => void;
-  errorMessage: string;
-  setErrorMessage: (msg: string) => void;
-  onUpdateMovies: (movies: MovieData[]) => void;
-};
-
-export default function SearchPanel({
-  onRecommend,
-  inputValue,
-  setInputValue,
-  setSubmitted,
-  selectedType,
-  setSelectedType,
-  errorMessage,
-  setErrorMessage,
-  onUpdateMovies,
-}: Props) {
+export default function SearchPanel() {
+  const {
+    onRecommend,
+    inputValue,
+    setInputValue,
+    setSubmitted,
+    selectedType,
+    setSelectedType,
+    errorMessage,
+    setErrorMessage,
+    onUpdateMovies,
+  } = useSearch();
   const [suggestions, setSuggestions] = useState([]);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -84,9 +73,8 @@ export default function SearchPanel({
   };
 
   const getPlaceholder = () => {
-    return `Enter a ${
-      selectedType === "movie" ? "movie" : "series"
-    } title you like...`;
+    return `Enter a ${selectedType === "movie" ? "movie" : "series"
+      } title you like...`;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
