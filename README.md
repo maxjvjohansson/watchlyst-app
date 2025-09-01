@@ -37,6 +37,39 @@
 
 ---
 
+
+
+## Local development
+
+To run WatchLyst locally, you need to set up environment variables for API access.
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/maxjvjohansson/watchlyst-app.git
+   cd watchlyst-app
+   ```
+
+2. **Copy `.env.example` to `.env.local`** in the project root:
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+3. **Fill in your API keys**:
+
+   * `VITE_TMDB_API_KEY`: Your TMDB API key ([get one here](https://www.themoviedb.org/settings/api)).
+   * `VITE_OPEN_AI_KEY`: Your OpenAI API key ([get one here](https://platform.openai.com/account/api-keys)).
+
+4. **Install dependencies and start the development server**:
+
+   ```bash
+   npm install
+   npm run dev
+   ```
+   
+Your app will be available at `http://localhost:5173`
+
 ## License
 
 This project is licensed under the **MIT License**
